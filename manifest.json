@@ -1,0 +1,56 @@
+{
+  "manifest_version": "0.2",
+  "name": "cufinder-claude",
+  "display_name": "CUFinder",
+  "version": "0.0.1",
+  "description": "CUFinder MCP server supporting stdio transports.",
+  "long_description": "Search any company or professional for everything from emails and phone numbers to roles, growth signals, tech stack, business events, website changes, and more. Find qualified leads, research prospects, identify talent, or craft personalized outreach—all without leaving chat. Explorium delivers fresh, compliant B2B data through a comprehensive enrichment hub.",
+  "author": {
+    "name": "CUFinder Team",
+    "email": "support@cufinder.io",
+    "url": "https://cufinder.io"
+  },
+  "icon": "logo.png",
+  "tools_generated": true,
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "CUFINDER_API_KEY": "${user_config.cufinder_api_key}",
+        "NODE_ENV": "production",
+        "MCP_TRANSPORT": "stdio"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "people_search",
+      "description": "Search for people using CUFinder PSE API with various filters"
+    },
+    {
+      "name": "companies_search",
+      "description": "Search for companies using CUFinder PSE API with various filters"
+    },
+    {
+      "name": "local_business_search",
+      "description": "Search for local businesses using CUFinder PSE API with various filters"
+    }
+  ],
+  "user_config": {
+    "cufinder_api_key": {
+      "type": "string",
+      "title": "CUFinder API key",
+      "description": "Your CUFinder API key.",
+      "required": true,
+      "multiple": false
+    }
+  },
+  "keywords": [
+    "cufinder",
+    "cufinder-mcp",
+    "mcp"
+  ]
+}
