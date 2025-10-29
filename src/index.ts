@@ -122,6 +122,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         switch (name) {
             case 'people_search':
                 return await handlePeopleSearch(args);
+            case 'companies_search':
+                return await handleCompaniesSearch(args);
             default:
                 throw new Error(`Unknown tool: ${name}`);
         }
