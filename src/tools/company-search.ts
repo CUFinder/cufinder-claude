@@ -1,13 +1,13 @@
 // ** shared
-import { CseServiceParams, CseServiceResponse } from "../shared/types";
+import { CseServiceParams, CseServiceResponse } from '../shared/types';
 
 // ** utils
-import apiClient from "../client";
-import { CompanyModel } from "../shared/models";
+import apiClient from '../client';
+import { CompanyModel } from '../shared/models';
 
-
-
-const searchCompanies = async (params: CseServiceParams): Promise<CseServiceResponse> => {
+const searchCompanies = async (
+    params: CseServiceParams,
+): Promise<CseServiceResponse> => {
     try {
         const response = await apiClient.post<CseServiceResponse>(
             '/cse',
@@ -17,7 +17,7 @@ const searchCompanies = async (params: CseServiceParams): Promise<CseServiceResp
     } catch (error: any) {
         throw new Error(`Failed to search companies: ${error.message}`);
     }
-}
+};
 
 function formatCompany(company: CompanyModel): string {
     let result = `🏢 ${company.name || '---'}`;
@@ -68,7 +68,6 @@ function formatCompany(company: CompanyModel): string {
     return result;
 }
 
-
 export const handleCompaniesSearch = async (args: any) => {
     const result = await searchCompanies(args as CseServiceParams);
     const { query, credit_count, companies } = result.data;
@@ -90,4 +89,4 @@ export const handleCompaniesSearch = async (args: any) => {
             },
         ],
     };
-}
+};

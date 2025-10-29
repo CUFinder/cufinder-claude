@@ -1,5 +1,5 @@
 // ** third parties
-import axios from "axios";
+import axios from 'axios';
 
 const API_KEY = process.env.CUFINDER_API_KEY;
 
@@ -13,16 +13,17 @@ const apiClient = axios.create({
     },
 });
 
-
 apiClient.interceptors.request.use((config) => {
     return config;
 });
 
-
-apiClient.interceptors.response.use((response) => {
-    return response;
-}, (error) => {
-    return Promise.reject(error);
-});
+apiClient.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    (error) => {
+        return Promise.reject(error);
+    },
+);
 
 export default apiClient;

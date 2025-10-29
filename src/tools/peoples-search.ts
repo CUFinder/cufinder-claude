@@ -1,13 +1,13 @@
 // ** shared
-import { PseServiceParams, PseServiceResponse } from "../shared/types";
-import { PeopleModel } from "../shared/models";
+import { PseServiceParams, PseServiceResponse } from '../shared/types';
+import { PeopleModel } from '../shared/models';
 
 // ** utils
-import apiClient from "../client";
+import apiClient from '../client';
 
-
-
-const searchPeople = async (params: PseServiceParams): Promise<PseServiceResponse> => {
+const searchPeople = async (
+    params: PseServiceParams,
+): Promise<PseServiceResponse> => {
     try {
         const response = await apiClient.post<PseServiceResponse>(
             '/pse',
@@ -17,8 +17,7 @@ const searchPeople = async (params: PseServiceParams): Promise<PseServiceRespons
     } catch (error: any) {
         throw new Error(`Failed to search people: ${error.message}`);
     }
-}
-
+};
 
 function formatPerson(person: PeopleModel): string {
     let result = ` ${person.full_name || '---'}`;
@@ -61,7 +60,6 @@ function formatPerson(person: PeopleModel): string {
     return result;
 }
 
-
 export const handlePeopleSearch = async (args: any) => {
     const result = await searchPeople(args as PseServiceParams);
     const { query, credit_count, peoples } = result.data;
@@ -83,4 +81,4 @@ export const handlePeopleSearch = async (args: any) => {
             },
         ],
     };
-}
+};

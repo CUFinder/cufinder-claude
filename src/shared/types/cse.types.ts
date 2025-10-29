@@ -1,6 +1,6 @@
 // ** shared
-import { CompanyModel } from "../models";
-import { BaseResponse } from "./base.types";
+import { CompanyModel } from '../models';
+import { BaseResponse } from './base.types';
 
 export interface CseServiceParams {
     name?: string;
@@ -21,7 +21,6 @@ export interface CseServiceParams {
     annual_revenue_max?: number;
     page?: number;
 }
-
 
 export interface CseServiceResponse
     extends BaseResponse<{ companies: CompanyModel[] }> {}
