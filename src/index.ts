@@ -9,12 +9,12 @@ import {
     CallToolRequestSchema,
     ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-
+import { handleLocalBusinessSearch } from './tools/local-business-search';
 
 const server = new Server(
     {
         name: 'cufinder-mcp',
-        version: '1.0.0',
+        version: '0.0.1',
     },
     {
         capabilities: {
@@ -109,6 +109,40 @@ const tools = [
             },
         },
     },
+    {
+        name: 'local_business_search',
+        description:
+            'Search for local businesses using CUFinder LBS API with various filters',
+        inputSchema: {
+            type: 'object',
+            properties: {
+                name: {
+                    type: 'string',
+                    description: 'Business name to filter by',
+                },
+                country: {
+                    type: 'string',
+                    description: 'Country to filter by',
+                },
+                state: {
+                    type: 'string',
+                    description: 'State/Province to filter by',
+                },
+                city: {
+                    type: 'string',
+                    description: 'City to filter by',
+                },
+                industry: {
+                    type: 'string',
+                    description: 'Industry to filter by',
+                },
+                page: {
+                    type: 'number',
+                    description: 'Page number for pagination',
+                },
+            },
+        },
+    },
 ];
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -124,6 +158,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 return await handlePeopleSearch(args);
             case 'companies_search':
                 return await handleCompaniesSearch(args);
+            case 'local_business_search':
+                return await handleLocalBusinessSearch(args);
             default:
                 throw new Error(`Unknown tool: ${name}`);
         }
@@ -140,7 +176,6 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
 });
 
-
 async function bootstrap() {
     const transport = new StdioServerTransport();
     await server.connect(transport);
@@ -152,4 +187,3 @@ bootstrap().catch((error) => {
     console.error('Server error:', error);
     process.exit(1);
 });
-
