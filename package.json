@@ -4,9 +4,6 @@
   "description": "CUFinder claude desktop MCP server",
   "type": "module",
   "main": "dist/index.js",
-  "bin": {
-    "cufinder-mcp": "dist/index.js"
-  },
   "author": {
     "name": "CUFinder Team",
     "email": "support@cufinder.io"
