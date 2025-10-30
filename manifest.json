@@ -8,7 +8,7 @@
   "author": {
     "name": "CUFinder Team",
     "email": "support@cufinder.io",
-    "url": "https://cufinder.io"
+    "url": "https://github.com/cufinder/cufinder-claude"
   },
   "icon": "logo.png",
   "tools_generated": true,
@@ -19,9 +19,7 @@
       "command": "node",
       "args": ["${__dirname}/dist/index.js"],
       "env": {
-        "CUFINDER_API_KEY": "${user_config.cufinder_api_key}",
-        "NODE_ENV": "production",
-        "MCP_TRANSPORT": "stdio"
+        "CUFINDER_API_KEY": "${user_config.cufinder_api_key}"
       }
     }
   },
