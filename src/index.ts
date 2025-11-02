@@ -1,6 +1,8 @@
 // ** tools
 import { handlePeopleSearch } from './tools/peoples-search';
 import { handleCompaniesSearch } from './tools/company-search';
+import { handleLocalBusinessSearch } from './tools/local-business-search';
+import { handleEnrichCompany } from './tools/enrich-company';
 
 // ** third parties
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
@@ -9,7 +11,6 @@ import {
     CallToolRequestSchema,
     ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import { handleLocalBusinessSearch } from './tools/local-business-search';
 
 const server = new Server(
     {
@@ -143,6 +144,21 @@ const tools = [
             },
         },
     },
+    {
+        name: 'enrich_company',
+        description:
+            'Enrich a company profile using CUFinder ENC API. Returns comprehensive company information including overview, employees, funding, technologies, locations, and contact details.',
+        inputSchema: {
+            type: 'object',
+            properties: {
+                query: {
+                    type: 'string',
+                    description: 'Company name to enrich',
+                },
+            },
+            required: ['query'],
+        },
+    },
 ];
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -160,6 +176,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 return await handleCompaniesSearch(args);
             case 'local_business_search':
                 return await handleLocalBusinessSearch(args);
+            case 'enrich_company':
+                return await handleEnrichCompany(args);
             default:
                 throw new Error(`Unknown tool: ${name}`);
         }

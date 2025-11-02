@@ -8,10 +8,18 @@
   "author": {
     "name": "CUFinder Team",
     "email": "support@cufinder.io",
+    "url": "https://cufinder.io"
+  },
+  "repository": {
+    "type": "git",
     "url": "https://github.com/cufinder/cufinder-claude"
   },
+  "homepage": "https://cufinder.io",
+  "privacy_policies": ["https://cufinder.io/privacy"],
   "icon": "logo.png",
   "tools_generated": true,
+  "prompts_generated": true,
+  "license": "MIT",
   "server": {
     "type": "node",
     "entry_point": "dist/index.js",
@@ -35,6 +43,10 @@
     {
       "name": "local_business_search",
       "description": "Search for local businesses using CUFinder PSE API with various filters"
+    },
+    {
+      "name": "enrich_company",
+      "description": "Enrich a company profile using CUFinder ENC API. Returns comprehensive company information including overview, employees, funding, technologies, locations, and contact details."
     }
   ],
   "user_config": {
@@ -46,9 +58,21 @@
       "multiple": false
     }
   },
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=16.0.0"
+    }
+  },
   "keywords": [
     "cufinder",
     "cufinder-mcp",
-    "mcp"
+    "mcp",
+    "claude desktop"
   ]
 }
