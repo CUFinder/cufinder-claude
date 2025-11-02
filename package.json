@@ -1,21 +1,28 @@
 {
   "name": "cufinder-claude",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "CUFinder claude desktop MCP server",
-  "type": "module",
   "main": "dist/index.js",
-  "bin": {
-    "cufinder-mcp": "dist/index.js"
-  },
   "author": {
     "name": "CUFinder Team",
     "email": "support@cufinder.io"
   },
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
+    "format": "prettier --write \"src/**/*.ts\"",
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.1",
+    "axios": "^1.12.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.1.3"
   }
 }
