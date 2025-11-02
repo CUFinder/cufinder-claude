@@ -3,6 +3,7 @@ import { handlePeopleSearch } from './tools/peoples-search';
 import { handleCompaniesSearch } from './tools/company-search';
 import { handleLocalBusinessSearch } from './tools/local-business-search';
 import { handleEnrichCompany } from './tools/enrich-company';
+import { handleEnrichPerson } from './tools/enrich-person';
 
 // ** third parties
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
@@ -159,6 +160,25 @@ const tools = [
             required: ['query'],
         },
     },
+    {
+        name: 'enrich_person',
+        description:
+            'Enrich a person profile using CUFinder TEP API. Returns comprehensive person information including current job, company, location, experience, education, skills, certifications, and contact details.',
+        inputSchema: {
+            type: 'object',
+            properties: {
+                full_name: {
+                    type: 'string',
+                    description: 'Full name of the person to enrich',
+                },
+                company: {
+                    type: 'string',
+                    description: 'Company name where the person works',
+                },
+            },
+            required: ['full_name', 'company'],
+        },
+    },
 ];
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -178,6 +198,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 return await handleLocalBusinessSearch(args);
             case 'enrich_company':
                 return await handleEnrichCompany(args);
+            case 'enrich_person':
+                return await handleEnrichPerson(args);
             default:
                 throw new Error(`Unknown tool: ${name}`);
         }

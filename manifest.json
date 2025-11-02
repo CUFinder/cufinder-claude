@@ -47,6 +47,10 @@
     {
       "name": "enrich_company",
       "description": "Enrich a company profile using CUFinder ENC API. Returns comprehensive company information including overview, employees, funding, technologies, locations, and contact details."
+    },
+    {
+      "name": "enrich_person",
+      "description": "Enrich a person profile using CUFinder TEP API. Returns comprehensive person information including current job, company, location, experience, education, skills, certifications, and contact details."
     }
   ],
   "user_config": {
