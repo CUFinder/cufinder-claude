@@ -3,8 +3,8 @@
   "name": "cufinder-claude",
   "display_name": "CUFinder",
   "version": "0.0.1",
-  "description": "CUFinder MCP server supporting stdio transports.",
-  "long_description": "Search any company or professional for everything from emails and phone numbers to roles, growth signals, tech stack, business events, website changes, and more. Find qualified leads, research prospects, identify talent, or craft personalized outreach—all without leaving chat. Explorium delivers fresh, compliant B2B data through a comprehensive enrichment hub.",
+  "description": "CUFinder MCP extension: Find and enrich any company or professional with verified B2B data instantly through chat.",
+  "long_description": "Discover and enrich any company or professional with verified B2B intelligence—instantly, right from your chat. Search CUFinder's massive database of 1 billion+ professional profiles and 85 million+ companies to uncover everything you need: verified work emails, direct phone numbers, LinkedIn profiles, job titles and seniority levels, company details, revenue data, funding history, technology stacks, employee counts, and more. Build laser-targeted prospect lists in seconds. Filter by location, industry, company size, revenue range, job roles, seniority levels, tech adoption, and LinkedIn follower counts to find your ideal customers, partners, or candidates. Whether you're prospecting CTOs at Series A SaaS startups in San Francisco, finding marketing directors at e-commerce companies with $10M-$50M revenue, or sourcing local plumbers in Houston—CUFinder delivers precise results every time. Enrich incomplete data effortlessly. Turn a name and company into a complete profile with verified contact details. Transform LinkedIn URLs into actionable intelligence. Discover company lookalikes, subsidiaries, and competitive insights. All without switching tabs or copying data between tools. Your B2B intelligence command center, powered by conversation. Research prospects for personalized outreach, qualify leads with firmographic data, identify decision-makers at target accounts, map competitive landscapes, source candidates for recruiting, discover local businesses for partnerships—all through natural language queries in Claude. CUFinder maintains 94-98% accuracy with daily-refreshed data, operates on a fair credit-based pricing model (pay only for successful results), and delivers compliant, verified B2B intelligence through 15+ specialized enrichment services and powerful search APIs. From enterprise sales teams to solo entrepreneurs, CUFinder transforms how you find, qualify, and connect with your next opportunity.",
   "author": {
     "name": "CUFinder Team",
     "email": "support@cufinder.io",
@@ -33,24 +33,19 @@
   },
   "tools": [
     {
-      "name": "people_search",
-      "description": "Search for people using CUFinder PSE API with various filters"
+      "name": "find_business"
     },
     {
-      "name": "companies_search",
-      "description": "Search for companies using CUFinder PSE API with various filters"
+      "name": "find_person"
     },
     {
-      "name": "local_business_search",
-      "description": "Search for local businesses using CUFinder PSE API with various filters"
+      "name": "search_businesses"
     },
     {
-      "name": "enrich_company",
-      "description": "Enrich a company profile using CUFinder ENC API. Returns comprehensive company information including overview, employees, funding, technologies, locations, and contact details."
+      "name": "search_persons"
     },
     {
-      "name": "enrich_person",
-      "description": "Enrich a person profile using CUFinder TEP API. Returns comprehensive person information including current job, company, location, experience, education, skills, certifications, and contact details."
+      "name": "search_local_businesses"
     }
   ],
   "user_config": {
