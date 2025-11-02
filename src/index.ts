@@ -16,7 +16,7 @@ import {
 const server = new Server(
     {
         name: 'cufinder-mcp',
-        version: '0.0.1',
+        version: '1.0.0',
     },
     {
         capabilities: {
