@@ -9,7 +9,7 @@
     "email": "support@cufinder.io"
   },
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
     "build": "tsc",
