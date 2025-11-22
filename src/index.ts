@@ -4026,15 +4026,15 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     try {
         switch (name) {
-            case 'people_search':
+            case 'search_persons':
                 return await handlePeopleSearch(args);
-            case 'companies_search':
+            case 'search_businesses':
                 return await handleCompaniesSearch(args);
-            case 'local_business_search':
+            case 'search_local_businesses':
                 return await handleLocalBusinessSearch(args);
-            case 'enrich_company':
+            case 'find_business':
                 return await handleEnrichCompany(args);
-            case 'enrich_person':
+            case 'find_person':
                 return await handleEnrichPerson(args);
             default:
                 throw new Error(`Unknown tool: ${name}`);
