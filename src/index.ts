@@ -118,6 +118,12 @@ const tools = [
             },
             required: ['query'],
         },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
+        },
     },
     {
         name: 'find_person',
@@ -248,6 +254,12 @@ const tools = [
                 },
             },
             required: ['full_name', 'company'],
+        },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
         },
     },
     {
@@ -1125,6 +1137,12 @@ const tools = [
                     description: 'Page number for pagination',
                 },
             },
+        },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
         },
     },
     {
@@ -2294,6 +2312,12 @@ const tools = [
                     description: 'Page number for pagination',
                 },
             },
+        },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
         },
     },
     {
@@ -4013,6 +4037,12 @@ const tools = [
                     description: 'Page number for pagination',
                 },
             },
+        },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
         },
     },
 ];
