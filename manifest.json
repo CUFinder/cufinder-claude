@@ -59,6 +59,7 @@
       "title": "CUFinder API key",
       "description": "Your CUFinder API key.",
       "required": true,
+      "sensitive": true,
       "multiple": false
     }
   },
