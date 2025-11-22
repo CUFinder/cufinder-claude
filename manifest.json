@@ -33,19 +33,24 @@
   },
   "tools": [
     {
-      "name": "find_business"
+      "name": "find_business",
+      "description": "Get the information about any business by name, domain or company LinkedIn URL in bulk."
     },
     {
-      "name": "find_person"
+      "name": "find_person",
+      "description": "Get comprehensive information about any person by their full name and company. Retrieve detailed professional profiles including contact information, job details, social profiles, and company data."
     },
     {
-      "name": "search_businesses"
+      "name": "search_businesses",
+      "description": "Search for companies based on multiple filters including location, industry, company size, founding year, funding amount, products/services, and more. This powerful search capability allows you to build highly targeted prospect lists with precision filtering."
     },
     {
-      "name": "search_persons"
+      "name": "search_persons",
+      "description": "Search for people based on multiple filters including their name, company information, location, industry, company size, revenue, and products/services. This powerful search capability allows you to build highly targeted lists of professionals and decision-makers with precision filtering."
     },
     {
-      "name": "search_local_businesses"
+      "name": "search_local_businesses",
+      "description": "Search for local businesses based on multiple filters including business name, location (country, state, city), and industry type. This specialized search capability allows you to find local establishments, service providers, and small businesses with precision targeting for local marketing, partnerships, or competitive analysis."
     }
   ],
   "user_config": {
