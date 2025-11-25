@@ -16,7 +16,7 @@ import {
 const server = new Server(
     {
         name: 'cufinder-mcp',
-        version: '1.0.0',
+        version: '1.0.1',
     },
     {
         capabilities: {
@@ -117,6 +117,12 @@ const tools = [
                 },
             },
             required: ['query'],
+        },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
         },
     },
     {
@@ -248,6 +254,12 @@ const tools = [
                 },
             },
             required: ['full_name', 'company'],
+        },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
         },
     },
     {
@@ -1125,6 +1137,12 @@ const tools = [
                     description: 'Page number for pagination',
                 },
             },
+        },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
         },
     },
     {
@@ -2294,6 +2312,12 @@ const tools = [
                     description: 'Page number for pagination',
                 },
             },
+        },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
         },
     },
     {
@@ -4014,6 +4038,12 @@ const tools = [
                 },
             },
         },
+        annotations: {
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: true,
+        },
     },
 ];
 
@@ -4026,15 +4056,15 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     try {
         switch (name) {
-            case 'people_search':
+            case 'search_persons':
                 return await handlePeopleSearch(args);
-            case 'companies_search':
+            case 'search_businesses':
                 return await handleCompaniesSearch(args);
-            case 'local_business_search':
+            case 'search_local_businesses':
                 return await handleLocalBusinessSearch(args);
-            case 'enrich_company':
+            case 'find_business':
                 return await handleEnrichCompany(args);
-            case 'enrich_person':
+            case 'find_person':
                 return await handleEnrichPerson(args);
             default:
                 throw new Error(`Unknown tool: ${name}`);

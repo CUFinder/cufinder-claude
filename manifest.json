@@ -2,7 +2,7 @@
   "manifest_version": "0.2",
   "name": "cufinder-claude",
   "display_name": "CUFinder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CUFinder MCP extension: Find and enrich any company or professional with verified B2B data instantly through chat.",
   "long_description": "Discover and enrich any company or professional with verified B2B intelligence—instantly, right from your chat. Search CUFinder's massive database of 1 billion+ professional profiles and 85 million+ companies to uncover everything you need: verified work emails, direct phone numbers, LinkedIn profiles, job titles and seniority levels, company details, revenue data, funding history, technology stacks, employee counts, and more. Build laser-targeted prospect lists in seconds. Filter by location, industry, company size, revenue range, job roles, seniority levels, tech adoption, and LinkedIn follower counts to find your ideal customers, partners, or candidates. Whether you're prospecting CTOs at Series A SaaS startups in San Francisco, finding marketing directors at e-commerce companies with $10M-$50M revenue, or sourcing local plumbers in Houston—CUFinder delivers precise results every time. Enrich incomplete data effortlessly. Turn a name and company into a complete profile with verified contact details. Transform LinkedIn URLs into actionable intelligence. Discover company lookalikes, subsidiaries, and competitive insights. All without switching tabs or copying data between tools. Your B2B intelligence command center, powered by conversation. Research prospects for personalized outreach, qualify leads with firmographic data, identify decision-makers at target accounts, map competitive landscapes, source candidates for recruiting, discover local businesses for partnerships—all through natural language queries in Claude. CUFinder maintains 94-98% accuracy with daily-refreshed data, operates on a fair credit-based pricing model (pay only for successful results), and delivers compliant, verified B2B intelligence through 15+ specialized enrichment services and powerful search APIs. From enterprise sales teams to solo entrepreneurs, CUFinder transforms how you find, qualify, and connect with your next opportunity.",
   "author": {
@@ -33,19 +33,24 @@
   },
   "tools": [
     {
-      "name": "find_business"
+      "name": "find_business",
+      "description": "Get the information about any business by name, domain or company LinkedIn URL in bulk."
     },
     {
-      "name": "find_person"
+      "name": "find_person",
+      "description": "Get comprehensive information about any person by their full name and company. Retrieve detailed professional profiles including contact information, job details, social profiles, and company data."
     },
     {
-      "name": "search_businesses"
+      "name": "search_businesses",
+      "description": "Search for companies based on multiple filters including location, industry, company size, founding year, funding amount, products/services, and more. This powerful search capability allows you to build highly targeted prospect lists with precision filtering."
     },
     {
-      "name": "search_persons"
+      "name": "search_persons",
+      "description": "Search for people based on multiple filters including their name, company information, location, industry, company size, revenue, and products/services. This powerful search capability allows you to build highly targeted lists of professionals and decision-makers with precision filtering."
     },
     {
-      "name": "search_local_businesses"
+      "name": "search_local_businesses",
+      "description": "Search for local businesses based on multiple filters including business name, location (country, state, city), and industry type. This specialized search capability allows you to find local establishments, service providers, and small businesses with precision targeting for local marketing, partnerships, or competitive analysis."
     }
   ],
   "user_config": {
@@ -54,6 +59,7 @@
       "title": "CUFinder API key",
       "description": "Your CUFinder API key.",
       "required": true,
+      "sensitive": true,
       "multiple": false
     }
   },

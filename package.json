@@ -1,6 +1,6 @@
 {
   "name": "cufinder-claude",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CUFinder claude desktop MCP server",
   "main": "dist/index.js",
   "author": {
