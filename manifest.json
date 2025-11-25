@@ -34,23 +34,23 @@
   "tools": [
     {
       "name": "find_business",
-      "description": "Get the information about any business by name, domain or company LinkedIn URL in bulk."
+      "description": "Retrieve comprehensive information about any business using company name, domain, or LinkedIn URL"
     },
     {
       "name": "find_person",
-      "description": "Get comprehensive information about any person by their full name and company. Retrieve detailed professional profiles including contact information, job details, social profiles, and company data."
+      "description": "Access detailed professional profiles by searching with full name and company information"
     },
     {
       "name": "search_businesses",
-      "description": "Search for companies based on multiple filters including location, industry, company size, founding year, funding amount, products/services, and more. This powerful search capability allows you to build highly targeted prospect lists with precision filtering."
+      "description": "Discover companies using advanced filters including location, industry, employee size, founding year, funding data, revenue, products/services, and technology stack"
     },
     {
       "name": "search_persons",
-      "description": "Search for people based on multiple filters including their name, company information, location, industry, company size, revenue, and products/services. This powerful search capability allows you to build highly targeted lists of professionals and decision-makers with precision filtering."
+      "description": "Locate professionals based on multiple criteria including name, job title, company details, location, industry, and influence level"
     },
     {
       "name": "search_local_businesses",
-      "description": "Search for local businesses based on multiple filters including business name, location (country, state, city), and industry type. This specialized search capability allows you to find local establishments, service providers, and small businesses with precision targeting for local marketing, partnerships, or competitive analysis."
+      "description": "Find local businesses within specific geographic areas using business name, location (country, state, city), and industry filters"
     }
   ],
   "user_config": {
