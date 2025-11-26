@@ -20,24 +20,52 @@ const searchCompanies = async (
 };
 
 function formatCompany(company: CompanyModel): string {
-    let result = `🏢 ${company.name || '---'}`;
+    let result = '';
 
-    if (company.type) {
-        result += `\n Type: ${company.type}`;
+    if (company?.name) {
+        result += `\nName: ${company.name}`;
     }
 
-    if (company.industry) {
-        result += `\n Industry: ${company.industry}`;
+    if (company?.overview) {
+        result += `\nOverview: ${company.overview}`;
     }
 
-    if (company.employees?.range) {
-        result += `\n Employee Size: ${company.employees.range}`;
+    if (company?.type) {
+        result += `\nType: ${company.type}`;
+    }
+
+    if (company?.industry) {
+        result += `\nIndustry: ${company.industry}`;
+    }
+
+    if (company?.employees?.range) {
+        result += `\nEmployee Size: ${company.employees.range}`;
+    }
+
+    if (company?.website) {
+        result += `\nWebsite: ${company.website}`;
+    }
+
+    if (company?.domain) {
+        result += `\nDomain: ${company.domain}`;
+    }
+
+    if (company?.social?.facebook) {
+        result += `\nFacebook: ${company.social.facebook}`;
+    }
+
+    if (company?.social?.linkedin) {
+        result += `\nLinkedIn: ${company.social.linkedin}`;
+    }
+
+    if (company?.social?.twitter) {
+        result += `\nX (twitter): ${company.social.twitter}`;
     }
 
     if (
-        company.main_location?.country ||
-        company.main_location?.state ||
-        company.main_location?.city
+        company?.main_location?.country ||
+        company?.main_location?.state ||
+        company?.main_location?.city
     ) {
         const loc = [
             company.main_location.country,
@@ -46,23 +74,11 @@ function formatCompany(company: CompanyModel): string {
         ]
             .filter(Boolean)
             .join(', ');
-        result += `\n Location: ${loc}`;
+        result += `\nLocation: ${loc}`;
     }
 
-    if (company.website) {
-        result += `\n Website: ${company.website}`;
-    }
-
-    if (company.domain) {
-        result += `\n Domain: ${company.domain}`;
-    }
-
-    if (company.social?.linkedin) {
-        result += `\n LinkedIn: ${company.social.linkedin}`;
-    }
-
-    if (company.overview) {
-        result += `\n Overview: ${company.overview}`;
+    if (company?.main_location?.address) {
+        result += `\nAddress: ${company.main_location.address}`;
     }
 
     return result;
@@ -70,12 +86,11 @@ function formatCompany(company: CompanyModel): string {
 
 export const handleCompaniesSearch = async (args: any) => {
     const result = await searchCompanies(args as CseServiceParams);
-    const { query, credit_count, companies } = result.data;
+    const { query, companies } = result.data;
 
-    let response = `🔍 CSE Search Results\n`;
+    let response = `🔍 Company Search Results\n`;
     response += `Query: ${query}\n`;
-    response += `Credits Used: ${credit_count}\n`;
-    response += `Found ${companies.length} companies:\n\n`;
+    response += `Credits Used: 3\n`;
 
     companies.forEach((company, index) => {
         response += `${index + 1}. ${formatCompany(company)}\n\n`;
