@@ -15,8 +15,8 @@ import {
 
 const server = new Server(
     {
-        name: 'cufinder-mcp',
-        version: '1.0.1',
+        name: 'cufinder-claude',
+        version: '1.0.2',
     },
     {
         capabilities: {
@@ -1128,9 +1128,52 @@ const tools = [
                     type: 'string',
                     description: 'Industry to filter by',
                 },
+                followers_count_min: {
+                    type: 'number',
+                    description: 'Minumum followers count to filter by',
+                },
+                followers_count_max: {
+                    type: 'number',
+                    description: 'Maximum followers count to filter by',
+                },
                 employee_size: {
                     type: 'string',
                     description: 'Employee size to filter by',
+                },
+                founded_after_year: {
+                    type: 'number',
+                    description: 'Founded after year to filter by',
+                },
+                founded_before_year: {
+                    type: 'number',
+                    description: 'Founded before year to filter by',
+                },
+                funding_amount_min: {
+                    type: 'number',
+                    description: 'Minimum Funding amount to filter by',
+                },
+                funding_amount_max: {
+                    type: 'number',
+                    description: 'Maximum funding amount to filter by',
+                },
+                products_services: {
+                    type: 'array',
+                    items: {
+                        type: 'string',
+                    },
+                    description: 'Products services keywords to filter by',
+                },
+                is_school: {
+                    type: 'boolean',
+                    description: 'Whether to filter for schools or not',
+                },
+                annual_revenue_min: {
+                    type: 'number',
+                    description: 'Minimum annual revenue to filter by',
+                },
+                annual_revenue_max: {
+                    type: 'number',
+                    description: 'Maximum annual revenue to filter by',
                 },
                 page: {
                     type: 'number',
@@ -2301,11 +2344,48 @@ const tools = [
                 },
                 company_name: {
                     type: 'string',
-                    description: 'Company name to filter by',
+                    description: "Company's name to filter by",
                 },
                 company_industry: {
                     type: 'string',
-                    description: 'Company industry to filter by',
+                    description: "Company's industry to filter by",
+                },
+                company_country: {
+                    type: 'string',
+                    description: "Company's country to filter by",
+                },
+                company_state: {
+                    type: 'string',
+                    description: "Company's state/province to filter by",
+                },
+                company_city: {
+                    type: 'string',
+                    description: "Company's city to filter by",
+                },
+                company_linkedin_url: {
+                    type: 'string',
+                    description: "Company's linkedin url to filter by",
+                },
+                company_employee_size: {
+                    type: 'string',
+                    description: "Company's employee size to filter by",
+                },
+                company_products_services: {
+                    type: 'array',
+                    items: {
+                        type: 'string',
+                    },
+                    description: "Company's products to filter by",
+                },
+                company_annual_revenue_min: {
+                    type: 'number',
+                    description:
+                        "Company's minimum annual revenue to filter by",
+                },
+                company_annual_revenue_max: {
+                    type: 'number',
+                    description:
+                        "Company's maximum annual revenue to filter by",
                 },
                 page: {
                     type: 'number',
