@@ -20,16 +20,20 @@ const searchPeople = async (
 };
 
 function formatPerson(person: PeopleModel): string {
-    let result = ` ${person.full_name || '---'}`;
+    let result = '';
 
-    if (person.current_job?.title) {
-        result += `\n Job Title: ${person.current_job.title}`;
+    if (person?.full_name) {
+        result += `\nJob Title: ${person.full_name}`;
+    }
+
+    if (person?.current_job?.title) {
+        result += `\nJob Title: ${person.current_job.title}`;
     }
 
     if (
-        person.location?.country ||
-        person.location?.state ||
-        person.location?.city
+        person?.location?.country ||
+        person?.location?.state ||
+        person?.location?.city
     ) {
         const loc = [
             person.location.country,
@@ -38,23 +42,23 @@ function formatPerson(person: PeopleModel): string {
         ]
             .filter(Boolean)
             .join(', ');
-        result += `\n Location: ${loc}`;
+        result += `\nLocation: ${loc}`;
     }
 
-    if (person.social?.linkedin) {
-        result += `\n LinkedIn: ${person.social.linkedin}`;
+    if (person?.social?.linkedin) {
+        result += `\nLinkedIn: ${person.social.linkedin}`;
     }
 
-    if (person.company?.name) {
-        result += `\n Company: ${person.company.name}`;
+    if (person?.company?.name) {
+        result += `\nCompany: ${person.company.name}`;
     }
 
-    if (person.company?.website) {
-        result += `\n Company Website: ${person.company.website}`;
+    if (person?.company?.website) {
+        result += `\nCompany Website: ${person.company.website}`;
     }
 
-    if (person.company?.industry) {
-        result += `\n Company Industry: ${person.company.industry}`;
+    if (person?.company?.industry) {
+        result += `\nCompany Industry: ${person.company.industry}`;
     }
 
     return result;
@@ -62,12 +66,11 @@ function formatPerson(person: PeopleModel): string {
 
 export const handlePeopleSearch = async (args: any) => {
     const result = await searchPeople(args as PseServiceParams);
-    const { query, credit_count, peoples } = result.data;
+    const { query, peoples } = result.data;
 
-    let response = `🔍 PSE Search Results\n`;
+    let response = `🔍 Person Search Results\n`;
     response += `Query: ${query}\n`;
-    response += `Credits Used: ${credit_count}\n`;
-    response += `Found ${peoples.length} people:\n\n`;
+    response += `Credits Used: 5\n`;
 
     peoples.forEach((person, index) => {
         response += `${index + 1}. ${formatPerson(person)}\n\n`;
