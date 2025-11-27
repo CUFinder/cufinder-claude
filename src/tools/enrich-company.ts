@@ -23,133 +23,53 @@ const enrichCompany = async (
 };
 
 function formatEnrichedCompany(company: EnrichedCompanyModel): string {
-    let result = `🏢 ${company.name || '---'}`;
+    let result = `${company.name || '---'}`;
 
-    if (company.website) {
-        result += `\n🌐 Website: ${company.website}`;
+    if (company.description) {
+        result += `\nOverview: ${company.description}`;
     }
 
     if (company.domain) {
-        result += `\n🔗 Domain: ${company.domain}`;
+        result += `\nDomain: ${company.domain}`;
+    }
+
+    if (company.website) {
+        result += `\nWebsite: ${company.website}`;
     }
 
     if (company.industry) {
-        result += `\n🏭 Industry: ${company.industry}`;
+        result += `\nIndustry: ${company.industry}`;
     }
 
-    if (company.employees?.range) {
-        result += `\n👥 Employee Size: ${company.employees.range}`;
+    if (company.size) {
+        result += `\nEmployee Size: ${company.size} (${company.employee_count} employees)`;
     }
 
-    if (company.employees?.count) {
-        result += `\n👥 Employee Count: ${company.employees.count}`;
+    if (company.followers_count) {
+        result += `\nFollowers Count: ${company.followers_count}`;
     }
 
-    if (company.annual_revenue) {
-        result += `\n💰 Annual Revenue: ${company.annual_revenue}`;
+    if (company.founded_year) {
+        result += `\nFounded Year: ${company.founded_year}`;
     }
 
-    if (company.founded_date) {
-        result += `\n📅 Founded: ${company.founded_date}`;
+    if (company.type) {
+        result += `\nType: ${company.type}`;
     }
 
-    if (
-        company.main_location?.country ||
-        company.main_location?.state ||
-        company.main_location?.city
-    ) {
-        const loc = [
-            company.main_location.country,
-            company.main_location.state,
-            company.main_location.city,
-        ]
+    if (company.linkedin_url) {
+        result += `\nLinkedIn: ${company.linkedin_url}`;
+    }
+
+    if (company.country || company.state || company.city) {
+        const location = [company.country, company.state, company.city]
             .filter(Boolean)
             .join(', ');
-        result += `\n📍 Location: ${loc}`;
+        result += `\nLocation: ${location}`;
     }
 
-    if (company.main_location?.address) {
-        result += `\n📮 Address: ${company.main_location.address}`;
-    }
-
-    if (company.followers) {
-        result += `\n👤 Followers: ${company.followers.toLocaleString()}`;
-    }
-
-    if (company.social?.linkedin) {
-        result += `\n🔗 LinkedIn: ${company.social.linkedin}`;
-    }
-
-    if (company.social?.twitter) {
-        result += `\n🐦 Twitter: ${company.social.twitter}`;
-    }
-
-    if (company.social?.facebook) {
-        result += `\n📘 Facebook: ${company.social.facebook}`;
-    }
-
-    if (company.overview) {
-        result += `\n📝 Overview: ${company.overview}`;
-    }
-
-    if (company.specialties && company.specialties.length > 0) {
-        result += `\n🎯 Specialties: ${company.specialties.join(', ')}`;
-    }
-
-    if (company.technologies && company.technologies.length > 0) {
-        result += `\n💻 Technologies:`;
-        company.technologies.slice(0, 10).forEach((tech) => {
-            if (tech.technology_name) {
-                result += `\n   • ${tech.technology_name}`;
-                if (tech.category) {
-                    result += ` (${tech.category})`;
-                }
-            }
-        });
-        if (company.technologies.length > 10) {
-            result += `\n   ... and ${company.technologies.length - 10} more`;
-        }
-    }
-
-    if (company.funding?.last_round_type) {
-        result += `\n💵 Funding:`;
-        result += `\n   • Last Round: ${company.funding.last_round_type}`;
-        if (company.funding.last_round_money_raised_amount) {
-            result += `\n   • Amount: ${company.funding.last_round_money_raised_amount}`;
-        }
-        if (company.funding.number_of_rounds) {
-            result += `\n   • Total Rounds: ${company.funding.number_of_rounds}`;
-        }
-    }
-
-    if (company.connections?.emails && company.connections.emails.length > 0) {
-        result += `\n📧 Emails: ${company.connections.emails.join(', ')}`;
-    }
-
-    if (company.connections?.phones && company.connections.phones.length > 0) {
-        result += `\n📞 Phones: ${company.connections.phones.join(', ')}`;
-    }
-
-    if (company.locations && company.locations.length > 0) {
-        result += `\n📍 Additional Locations (${company.locations.length}):`;
-        company.locations.slice(0, 5).forEach((loc, idx) => {
-            const locStr = [loc.country, loc.state, loc.city]
-                .filter(Boolean)
-                .join(', ');
-            if (locStr) {
-                result += `\n   ${idx + 1}. ${locStr}`;
-            }
-        });
-        if (company.locations.length > 5) {
-            result += `\n   ... and ${company.locations.length - 5} more`;
-        }
-    }
-
-    if (company.geo_location?.rating) {
-        result += `\n⭐ Google Rating: ${company.geo_location.rating}`;
-        if (company.geo_location.reviews_count) {
-            result += ` (${company.geo_location.reviews_count} reviews)`;
-        }
+    if (company?.address) {
+        result += `\nAddress: ${company.address}`;
     }
 
     return result;
@@ -157,11 +77,11 @@ function formatEnrichedCompany(company: EnrichedCompanyModel): string {
 
 export const handleEnrichCompany = async (args: any) => {
     const result = await enrichCompany(args as EncServiceParams);
-    const { query, credit_count, company } = result.data;
+    const { query, company } = result.data;
 
-    let response = `🔍 ENC Company Enrichment Results\n`;
+    let response = `🔍 Company Enrichment Result\n`;
     response += `Query: ${query}\n`;
-    response += `Credits Used: ${credit_count}\n\n`;
+    response += `Credits Used: 3\n\n`;
     response += formatEnrichedCompany(company);
 
     return {

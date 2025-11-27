@@ -20,14 +20,89 @@ const searchLocalBusinesses = async (
 };
 
 function formatLocalBusiness(business: LocalBusinessModel): string {
-    let result = ` ${business.name || '---'}`;
-
-    if (business.social?.linkedin) {
-        result += `\n LinkedIn: ${business.social.linkedin}`;
-    }
+    let result = '';
 
     if (business.name) {
-        result += `\n Company: ${business.name}`;
+        result += `Name: ${business.name}`;
+    }
+
+    if (business?.overview) {
+        result += `\nOverview: ${business.overview}`;
+    }
+
+    if (business.website) {
+        result += `\nCompany: ${business.website}`;
+    }
+
+    if (business.industry) {
+        result += `\nIndustry: ${business.industry}`;
+    }
+
+    if (business?.industry_details?.level_1) {
+        result += `\nIndustry Category: ${business.industry_details.level_1}`;
+    }
+
+    if (business?.industry_details?.level_2) {
+        result += `\nIndustry Top Category: ${business.industry_details.level_2}`;
+    }
+
+    if (business?.industry_details?.naics_code) {
+        result += `\nIndustry NAICS Code: ${business.industry_details.naics_code}`;
+    }
+
+    if (business?.industry_details?.sic_code) {
+        result += `\nIndustry SIC Code: ${business.industry_details.sic_code}`;
+    }
+
+    if (
+        business.main_location?.country ||
+        business.main_location?.state ||
+        business.main_location?.city
+    ) {
+        const location = [
+            business.main_location.country,
+            business.main_location.state,
+            business.main_location.city,
+        ]
+            .filter(Boolean)
+            .join(', ');
+        result += `\nMain Location: ${location}`;
+    }
+
+    if (business?.geo_location?.rating) {
+        result += `\nGoogle Maps Rating: ${business.geo_location.rating}`;
+    }
+
+    if (business?.geo_location?.reviews_count) {
+        result += `\nGoogle Maps Reviews Count: ${business.geo_location.reviews_count}`;
+    }
+
+    if (business?.social?.facebook) {
+        result += `\nFacebook: ${business.social.facebook}`;
+    }
+
+    if (business?.social?.linkedin) {
+        result += `\nLinkedIn: ${business.social.linkedin}`;
+    }
+
+    if (business?.social?.linkedin) {
+        result += `\nX (twitter): ${business.social.twitter}`;
+    }
+
+    if (business?.social?.instagram) {
+        result += `\nInstagram: ${business.social.instagram}`;
+    }
+
+    if (business?.social?.youtube) {
+        result += `\nYoutube: ${business.social.youtube}`;
+    }
+
+    if (business?.connections?.emails?.length > 0) {
+        result += `\nEmails: ${business.connections?.emails.join(', ')}`;
+    }
+
+    if (business?.connections?.phones?.length > 0) {
+        result += `\nPhones: ${business.connections?.phones.join(', ')}`;
     }
 
     return result;
@@ -35,12 +110,11 @@ function formatLocalBusiness(business: LocalBusinessModel): string {
 
 export const handleLocalBusinessSearch = async (args: any) => {
     const result = await searchLocalBusinesses(args as LbsServiceParams);
-    const { query, credit_count, companies } = result.data;
+    const { query, companies } = result.data;
 
-    let response = `🔍 PSE Search Results\n`;
+    let response = `🔍 Local Business Search Results\n`;
     response += `Query: ${query}\n`;
-    response += `Credits Used: ${credit_count}\n`;
-    response += `Found ${companies.length} companies:\n\n`;
+    response += `Credits Used: 5\n`;
 
     companies.forEach((company, index) => {
         response += `${index + 1}. ${formatLocalBusiness(company)}\n\n`;
