@@ -8,7 +8,7 @@ const apiClient = axios.create({
     timeout: 60000,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'cufinder-claude-extension/1.0.2',
+        'User-Agent': 'cufinder-claude/1.0.3',
         'x-api-key': API_KEY,
     },
 });
